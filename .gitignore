@@ -1,3 +1,9 @@
+# Subgraph
+build/
+generated/
+tests/.bin/
+tests/.latest.json
+
 # Logs
 logs
 *.log
