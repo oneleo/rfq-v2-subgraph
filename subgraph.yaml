@@ -1,0 +1,47 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: RFQv2
+    network: mainnet
+    source:
+      address: "0x91C986709Bb4fE0763edF8E2690EE9d5019Bea4a"
+      abi: RFQv2
+      startBlock: 17976125
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AllowTransfer
+        - DepositETH
+        - DisallowTransfer
+        - FilledRFQ
+        - OwnerChanged
+        - OwnerNominated
+        - SetFeeCollector
+        - UpgradeSpender
+      abis:
+        - name: RFQv2
+          file: ./abis/RFQv2.json
+      eventHandlers:
+        - event: AllowTransfer(indexed address,address)
+          handler: handleAllowTransfer
+        - event: DepositETH(uint256)
+          handler: handleDepositETH
+        - event: DisallowTransfer(indexed address,address)
+          handler: handleDisallowTransfer
+        - event: FilledRFQ(indexed bytes32,indexed address,indexed address,address,uint256,address,uint256,address,uint256,uint256)
+          handler: handleFilledRFQ
+        - event: OwnerChanged(indexed address,indexed address)
+          handler: handleOwnerChanged
+        - event: OwnerNominated(indexed address)
+          handler: handleOwnerNominated
+        - event: SetFeeCollector(address)
+          handler: handleSetFeeCollector
+        - event: UpgradeSpender(address)
+          handler: handleUpgradeSpender
+      file: ./src/rf-qv-2.ts

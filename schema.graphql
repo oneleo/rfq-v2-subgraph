@@ -1,0 +1,75 @@
+type AllowTransfer @entity(immutable: true) {
+  id: Bytes!
+  spender: Bytes! # address
+  token: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DepositETH @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DisallowTransfer @entity(immutable: true) {
+  id: Bytes!
+  spender: Bytes! # address
+  token: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FilledRFQ @entity(immutable: true) {
+  id: Bytes!
+  offerHash: Bytes! # bytes32
+  user: Bytes! # address
+  maker: Bytes! # address
+  takerToken: Bytes! # address
+  takerTokenAmount: BigInt! # uint256
+  makerToken: Bytes! # address
+  makerTokenAmount: BigInt! # uint256
+  recipient: Bytes! # address
+  settleAmount: BigInt! # uint256
+  feeFactor: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnerChanged @entity(immutable: true) {
+  id: Bytes!
+  oldOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnerNominated @entity(immutable: true) {
+  id: Bytes!
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetFeeCollector @entity(immutable: true) {
+  id: Bytes!
+  newFeeCollector: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UpgradeSpender @entity(immutable: true) {
+  id: Bytes!
+  newSpender: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
